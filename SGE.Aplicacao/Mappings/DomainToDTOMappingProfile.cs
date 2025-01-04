@@ -10,5 +10,6 @@ public class DomainToDTOMappingProfile : Profile
     public DomainToDTOMappingProfile()
     {        
         CreateMap<Endereco, EnderecoDTO>().ReverseMap();
+        CreateMap<Usuario, UsuarioDTO>().ReverseMap();
     }
 }
