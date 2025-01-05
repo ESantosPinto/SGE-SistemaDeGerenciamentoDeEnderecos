@@ -9,26 +9,39 @@ namespace SGE.Aplicacao.Services;
 public class EnderecoService : IEnderecoService
 {
     private readonly IEnderecoRepositorio _enderecoRepositorio;
-    private readonly IMapper _mapper;
+    private readonly IMapper _mapper;  
 
     public EnderecoService(IEnderecoRepositorio enderecoRepositorio, IMapper mapper)
     {
         _enderecoRepositorio = enderecoRepositorio;
-        _mapper = mapper;
+        _mapper = mapper;       
     }
+
 
     public async Task<IEnumerable<EnderecoDTO>> GetEnderecos()
     {
         try
         {
             var enderecoEntities = await _enderecoRepositorio.GetEnderecosAsync();
-            return _mapper.Map<IEnumerable<EnderecoDTO>>(enderecoEntities);
+            var enderecosDTO = _mapper.Map<IEnumerable<EnderecoDTO>>(enderecoEntities);
+
+            if (enderecosDTO == null)
+            {
+                throw new ApplicationException("Erro ao mapear os endereços.");
+            }
+
+            return enderecosDTO;
+        }
+        catch (HttpRequestException)
+        {
+            throw;
         }
         catch (Exception ex)
-        {                
+        {
             throw new ApplicationException("Erro ao obter endereços.", ex);
         }
     }
+
 
     public async Task<EnderecoDTO> GetPorId(int id)
     {

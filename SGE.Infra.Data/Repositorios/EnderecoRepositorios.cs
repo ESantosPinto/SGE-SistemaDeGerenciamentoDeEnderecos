@@ -2,15 +2,12 @@
 using Microsoft.EntityFrameworkCore;
 using SGE.Dominio.Interfaces;
 using SGE.Infra.Data.Contexto;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SGE.Infra.Data.Repositorios
 {
     public class EnderecoRepositorio : IEnderecoRepositorio
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _context;        
 
         public EnderecoRepositorio(AppDbContext context)
         {
@@ -21,10 +18,10 @@ namespace SGE.Infra.Data.Repositorios
         {
             try
             {
-                return await _context.Enderecos.ToListAsync();
+                return await _context.Enderecos.AsNoTracking().ToListAsync();
             }
-            catch (Exception ex)
-            {                
+            catch (Exception ex)            {
+                
                 throw new ApplicationException("Erro ao obter endereços.", ex);
             }
         }
@@ -43,7 +40,7 @@ namespace SGE.Infra.Data.Repositorios
                 return endereco;
             }
             catch (Exception ex)
-            {                
+            {
                 throw new ApplicationException("Erro ao obter o endereço por ID.", ex);
             }
         }
@@ -59,7 +56,7 @@ namespace SGE.Infra.Data.Repositorios
                 return endereco;
             }
             catch (Exception ex)
-            {                
+            {
                 throw new ApplicationException("Erro ao adicionar o endereço.", ex);
             }
         }

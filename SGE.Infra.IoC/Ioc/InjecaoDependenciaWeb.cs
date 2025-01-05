@@ -14,7 +14,7 @@ public static class InjecaoDependenciaWeb
          IConfiguration configuration)
     {
         services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));    
 
         services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
         services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
