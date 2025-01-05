@@ -5,22 +5,26 @@ using System.Text.RegularExpressions;
 
 namespace Catalogo.Domain.Entities
 {
-    public sealed class Endereco : Identity
+    public class Endereco : Identity
     {
-        public string Cep { get; private set; } = string.Empty;
-        public string Logradouro { get; private set; } = string.Empty;
-        public string Complemento { get; private set; } = string.Empty;
-        public string Bairro { get; private set; } = string.Empty;
-        public string Cidade { get; private set; } = string.Empty;
-        public string Uf { get; private set; } = string.Empty;
-        public string Numero { get; private set; } = string.Empty;
+        public string Cep { get; set; } = string.Empty;
+        public string Logradouro { get; set; } = string.Empty;
+        public string Complemento { get; set; } = string.Empty;
+        public string Bairro { get; set; } = string.Empty;
+        public string Cidade { get; set; } = string.Empty;
+        public string Uf { get; set; } = string.Empty;
+        public string Numero { get; set; } = string.Empty;
         public int UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
+
+        public Endereco()
+        {
+        }
 
         public Endereco(string cep, string logradouro, string complemento, string bairro, string cidade, string uf, string numero)
         {
             ValidateDomain(cep, logradouro, complemento, bairro, cidade, uf, numero);
-        }
+        }   
 
         private void ValidateDomain(string cep, string logradouro, string complemento, string bairro, string cidade, string uf, string numero)
         {

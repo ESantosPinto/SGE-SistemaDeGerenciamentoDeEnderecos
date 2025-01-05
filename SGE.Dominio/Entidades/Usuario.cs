@@ -1,4 +1,5 @@
-﻿using SGE.Dominio.Entidades;
+﻿using Catalogo.Domain.Entities;
+using SGE.Dominio.Entidades;
 
 namespace SGE.Dominio.Entities;
 
@@ -7,6 +8,7 @@ public class Usuario : EntidadeBase
     public string Nome { get; set; } = string.Empty;
     public string UsuarioLogin { get; set; } = string.Empty;
     public string Senha { get; set; } = string.Empty;
+    public ICollection<Endereco> Enderecos { get; set; } = new List<Endereco>();
 
     public Usuario(string usuarioLogin, string senha)
     {
