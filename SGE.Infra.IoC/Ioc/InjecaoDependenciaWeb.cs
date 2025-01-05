@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SGE.Aplicacao.Interfaces;
 using SGE.Aplicacao.Mappings;
+using SGE.Aplicacao.Services;
 using SGE.Dominio.Interfaces;
 using SGE.Infra.Data.Contexto;
 using SGE.Infra.Data.Repositorios;
@@ -18,6 +20,8 @@ public static class InjecaoDependenciaWeb
 
         services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
         services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+        services.AddScoped<IEnderecoService, EnderecoService>();
+        services.AddScoped<IUsuarioService, UsuarioService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

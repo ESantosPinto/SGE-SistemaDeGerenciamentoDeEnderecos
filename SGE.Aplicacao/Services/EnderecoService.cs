@@ -18,11 +18,11 @@ public class EnderecoService : IEnderecoService
     }
 
 
-    public async Task<IEnumerable<EnderecoDTO>> GetEnderecos()
+    public async Task<IEnumerable<EnderecoDTO>> BuscaaEnderecoAsync()
     {
         try
         {
-            var enderecoEntities = await _enderecoRepositorio.GetEnderecosAsync();
+            var enderecoEntities = await _enderecoRepositorio.BuscarEnderecosAsync();
             var enderecosDTO = _mapper.Map<IEnumerable<EnderecoDTO>>(enderecoEntities);
 
             if (enderecosDTO == null)
@@ -42,14 +42,13 @@ public class EnderecoService : IEnderecoService
         }
     }
 
-
-    public async Task<EnderecoDTO> GetPorId(int id)
+    public async Task<EnderecoDTO> BuscarEnderecoPorIdAsync(int id)
     {
         if (id <= 0) throw new ArgumentException("O ID deve ser um número positivo.", nameof(id));
 
         try
         {
-            var enderecoEntity = await _enderecoRepositorio.GetEnderecoPorIdAsync(id);
+            var enderecoEntity = await _enderecoRepositorio.BuscarEnderecoPorIdAsync(id);
 
             if (enderecoEntity == null)
             {
@@ -58,28 +57,28 @@ public class EnderecoService : IEnderecoService
             return _mapper.Map<EnderecoDTO>(enderecoEntity);
         }
         catch (Exception ex)
-        {                
+        {
             throw new ApplicationException("Erro ao obter o endereço.", ex);
         }
     }
 
-    public async Task Add(EnderecoDTO enderecoDTO)
+    public async Task<EnderecoDTO> AdicionarEnderecoAsync(EnderecoDTO enderecoDTO)
     {
         if (enderecoDTO == null) throw new ArgumentNullException(nameof(enderecoDTO));
 
         try
         {
-            var enderecoEntity = _mapper.Map<Endereco>(enderecoDTO);
-            await _enderecoRepositorio.AddEnderecoAsync(enderecoEntity);
+           var enderecoResultado = await _enderecoRepositorio.AdicionarEnderecoAsync(_mapper.Map<Endereco>(enderecoDTO));
+            return _mapper.Map<EnderecoDTO>(enderecoResultado);
         }
         catch (Exception ex)
-        {   
-            
+        {
+
             throw new ApplicationException("Erro ao adicionar o endereço.", ex);
         }
     }
 
-    public async Task Atualiza(EnderecoDTO enderecoDTO)
+    public async Task AtualizaEnderecoAsync(EnderecoDTO enderecoDTO)
     {
         if (enderecoDTO == null) throw new ArgumentNullException(nameof(enderecoDTO));
 
@@ -94,13 +93,14 @@ public class EnderecoService : IEnderecoService
         }
     }
 
-    public async Task Remove(int id)
+    public async Task RemoveEnderecoAsync(int id)
     {
+
         if (id <= 0) throw new ArgumentException("O ID deve ser um número positivo.", nameof(id));
 
         try
         {
-            var enderecoEntity = await _enderecoRepositorio.GetEnderecoPorIdAsync(id);
+            var enderecoEntity = await _enderecoRepositorio.BuscarEnderecoPorIdAsync(id);
             if (enderecoEntity == null)
             {
                 throw new KeyNotFoundException("Endereço não encontrado.");

@@ -5,9 +5,9 @@ namespace SGE.Dominio.Interfaces
 {
     public interface IEnderecoRepositorio
     {
-        Task<IEnumerable<Endereco>> GetEnderecosAsync();
-        Task<Endereco> GetEnderecoPorIdAsync(int id);
-        Task<Endereco> AddEnderecoAsync(Endereco endereco);
+        Task<IEnumerable<Endereco>> BuscarEnderecosAsync();
+        Task<Endereco> BuscarEnderecoPorIdAsync(int id);
+        Task<Endereco> AdicionarEnderecoAsync(Endereco endereco);
         Task<Endereco> AtualizarEnderecoAsync(Endereco endereco);
         Task<Endereco> RemoverEnderecoAsync(Endereco endereco);
     }

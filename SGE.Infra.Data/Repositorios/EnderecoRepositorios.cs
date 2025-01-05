@@ -14,7 +14,7 @@ namespace SGE.Infra.Data.Repositorios
             _context = context;
         }
 
-        public async Task<IEnumerable<Endereco>> GetEnderecosAsync()
+        public async Task<IEnumerable<Endereco>> BuscarEnderecosAsync()
         {
             try
             {
@@ -27,7 +27,7 @@ namespace SGE.Infra.Data.Repositorios
             }
         }
 
-        public async Task<Endereco> GetEnderecoPorIdAsync(int id)
+        public async Task<Endereco> BuscarEnderecoPorIdAsync(int id)
         {
             if (id <= 0) throw new ArgumentException("O ID deve ser um número positivo.", nameof(id));
 
@@ -47,7 +47,7 @@ namespace SGE.Infra.Data.Repositorios
             }
         }
 
-        public async Task<Endereco> AddEnderecoAsync(Endereco endereco)
+        public async Task<Endereco> AdicionarEnderecoAsync(Endereco endereco)
         {
             if (endereco == null) throw new ArgumentNullException(nameof(endereco));
 
@@ -95,5 +95,6 @@ namespace SGE.Infra.Data.Repositorios
                 throw new ApplicationException("Erro ao remover o endereço.", ex);
             }
         }
+
     }
 }

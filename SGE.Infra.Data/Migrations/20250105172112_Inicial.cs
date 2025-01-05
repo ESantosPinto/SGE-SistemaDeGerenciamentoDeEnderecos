@@ -61,8 +61,8 @@ namespace SGE.Infra.Data.Migrations
                 columns: new[] { "Id", "Ativo", "DataCadastro", "Nome", "Senha", "UsuarioLogin" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2025, 1, 5, 10, 11, 48, 693, DateTimeKind.Utc).AddTicks(8169), "Elias Santos", "123456", "EliasS" },
-                    { 2, true, new DateTime(2025, 1, 5, 10, 11, 48, 693, DateTimeKind.Utc).AddTicks(8830), "Nilton Santos", "654321", "NiltonP" }
+                    { 1, true, new DateTime(2025, 1, 5, 17, 21, 11, 4, DateTimeKind.Utc).AddTicks(470), "Elias Santos", "123456", "EliasS" },
+                    { 2, true, new DateTime(2025, 1, 5, 17, 21, 11, 4, DateTimeKind.Utc).AddTicks(1197), "Nilton Santos", "654321", "NiltonP" }
                 });
 
             migrationBuilder.InsertData(
