@@ -10,6 +10,10 @@ public class Usuario : EntidadeBase
     public string Senha { get; set; } = string.Empty;
     public ICollection<Endereco> Enderecos { get; set; } = new List<Endereco>();
 
+    public Usuario()
+    {
+    }
+
     public Usuario(string usuarioLogin, string senha)
     {
         UsuarioLogin = usuarioLogin;
