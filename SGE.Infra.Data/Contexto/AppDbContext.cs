@@ -1,11 +1,14 @@
-﻿using Catalogo.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using SGE.Dominio.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGE.Dominio.Entidades;
 
 namespace SGE.Infra.Data.Contexto;
 
 public class AppDbContext : DbContext
 {
+    public AppDbContext()
+    {
+    }
+
     public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options)
     { }

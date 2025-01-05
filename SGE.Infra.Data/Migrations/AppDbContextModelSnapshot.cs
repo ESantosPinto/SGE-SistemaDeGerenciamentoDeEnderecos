@@ -22,7 +22,7 @@ namespace SGE.Infra.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Catalogo.Domain.Entities.Endereco", b =>
+            modelBuilder.Entity("SGE.Dominio.Entidades.Endereco", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -108,7 +108,7 @@ namespace SGE.Infra.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("SGE.Dominio.Entities.Usuario", b =>
+            modelBuilder.Entity("SGE.Dominio.Entidades.Usuario", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,9 +165,9 @@ namespace SGE.Infra.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Catalogo.Domain.Entities.Endereco", b =>
+            modelBuilder.Entity("SGE.Dominio.Entidades.Endereco", b =>
                 {
-                    b.HasOne("SGE.Dominio.Entities.Usuario", "Usuario")
+                    b.HasOne("SGE.Dominio.Entidades.Usuario", "Usuario")
                         .WithMany("Enderecos")
                         .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -176,7 +176,7 @@ namespace SGE.Infra.Data.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("SGE.Dominio.Entities.Usuario", b =>
+            modelBuilder.Entity("SGE.Dominio.Entidades.Usuario", b =>
                 {
                     b.Navigation("Enderecos");
                 });

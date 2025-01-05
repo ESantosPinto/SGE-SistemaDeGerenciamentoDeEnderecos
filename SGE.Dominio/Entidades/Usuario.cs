@@ -1,7 +1,4 @@
-﻿using Catalogo.Domain.Entities;
-using SGE.Dominio.Entidades;
-
-namespace SGE.Dominio.Entities;
+﻿namespace SGE.Dominio.Entidades;
 
 public class Usuario : EntidadeBase
 {

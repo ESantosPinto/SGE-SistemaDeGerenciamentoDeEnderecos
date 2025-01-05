@@ -1,6 +1,4 @@
-﻿using SGE.Dominio.Entities;
-
-namespace SGE.Dominio.Entidades;
+﻿namespace SGE.Dominio.Entidades;
 
 public abstract class EntidadeBase : Identity
 {

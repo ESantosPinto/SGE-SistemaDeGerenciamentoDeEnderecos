@@ -1,9 +1,9 @@
 using AutoMapper;
-using Catalogo.Domain.Entities;
 using SGE.Aplicacao.DTOs;
-using SGE.Dominio.Entities;
+using SGE.Dominio.Entidades;
 
-namespace Catalogo.Application.Mappings;
+
+namespace SGE.Aplicacao.Mappings;
 
 public class DomainToDTOMappingProfile : Profile
 {

@@ -1,6 +1,6 @@
-﻿using Catalogo.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SGE.Dominio.Entidades;
 
 namespace SGE.Infra.Data.ConfiguracaoDeEntidades;
 

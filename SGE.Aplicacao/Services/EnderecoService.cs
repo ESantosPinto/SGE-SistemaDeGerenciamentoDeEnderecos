@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using Catalogo.Domain.Entities;
 using SGE.Aplicacao.DTOs;
 using SGE.Aplicacao.Interfaces;
+using SGE.Dominio.Entidades;
 using SGE.Dominio.Interfaces;
 
 namespace SGE.Aplicacao.Services;
@@ -73,7 +73,8 @@ public class EnderecoService : IEnderecoService
             await _enderecoRepositorio.AddEnderecoAsync(enderecoEntity);
         }
         catch (Exception ex)
-        {                
+        {   
+            
             throw new ApplicationException("Erro ao adicionar o endereço.", ex);
         }
     }

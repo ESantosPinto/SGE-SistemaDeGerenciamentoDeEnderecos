@@ -1,7 +1,7 @@
-﻿using Catalogo.Application.Mappings;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SGE.Aplicacao.Mappings;
 using SGE.Dominio.Interfaces;
 using SGE.Infra.Data.Contexto;
 using SGE.Infra.Data.Repositorios;

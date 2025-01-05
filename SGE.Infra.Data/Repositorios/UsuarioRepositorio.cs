@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SGE.Dominio.Entities;
+using SGE.Dominio.Entidades;
 using SGE.Dominio.Interfaces;
 using SGE.Infra.Data.Contexto;
-using System;
-using System.Threading.Tasks;
 
 namespace SGE.Infra.Data.Repositorios
 {

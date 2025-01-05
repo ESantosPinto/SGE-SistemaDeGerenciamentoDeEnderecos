@@ -1,5 +1,5 @@
-﻿using Catalogo.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using SGE.Dominio.Entidades;
 using SGE.Dominio.Interfaces;
 using SGE.Infra.Data.Contexto;
 
@@ -59,6 +59,7 @@ namespace SGE.Infra.Data.Repositorios
             }
             catch (Exception ex)
             {
+
                 throw new ApplicationException("Erro ao adicionar o endereço.", ex);
             }
         }

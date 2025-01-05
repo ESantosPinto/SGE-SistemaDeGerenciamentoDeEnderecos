@@ -1,4 +1,5 @@
-﻿using Catalogo.Domain.Entities;
+﻿
+using SGE.Dominio.Entidades;
 
 namespace SGE.Dominio.Interfaces
 {

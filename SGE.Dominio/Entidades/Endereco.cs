@@ -1,9 +1,6 @@
-﻿using SGE.Dominio.Entities;
-using SGE.Dominio;
-using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
-namespace Catalogo.Domain.Entities
+namespace SGE.Dominio.Entidades
 {
     public class Endereco : Identity
     {

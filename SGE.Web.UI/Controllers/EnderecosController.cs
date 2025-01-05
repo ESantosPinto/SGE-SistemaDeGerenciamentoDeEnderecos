@@ -41,4 +41,32 @@ public class EnderecosController : Controller
         }
         return View(endereco); 
     }
+
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(EnderecoDTO enderecoDTO)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                await _enderecoService.Add(enderecoDTO);
+                return RedirectToAction(nameof(Index)); 
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Erro ao adicionar o endereço: " + ex.Message);
+            }
+        }
+
+        return View(enderecoDTO);
+    }
+
+
 }
