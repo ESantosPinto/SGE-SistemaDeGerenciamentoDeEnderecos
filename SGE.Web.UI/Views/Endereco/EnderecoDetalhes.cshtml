@@ -1,0 +1,29 @@
+﻿@model SGE.Aplicacao.DTOs.EnderecoDTO
+
+<h2>Detalhes do Endereço</h2>
+
+<div>
+    <strong>Cep:</strong> @Model.Cep
+</div>
+<div>
+    <strong>Complemento:</strong> @Model.Complemento
+</div>
+<div>
+    <strong>Rua:</strong> @Model.Logradouro
+</div>
+<div>
+    <strong>Bairro:</strong> @Model.Bairro
+</div>
+<div>
+    <strong>Cidade:</strong> @Model.Cidade
+</div>
+<div>
+    <strong>Estado:</strong> @Model.Uf
+</div>
+<div>
+    <strong>Numero:</strong> @Model.Numero
+</div>
+
+<div>
+    <a href="@Url.Action("Index", "Enderecos")">Voltar à lista de endereços</a>
+</div>

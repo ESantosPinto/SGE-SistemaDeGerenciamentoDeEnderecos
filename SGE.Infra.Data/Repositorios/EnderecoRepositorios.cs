@@ -20,7 +20,8 @@ namespace SGE.Infra.Data.Repositorios
             {
                 return await _context.Enderecos.AsNoTracking().ToListAsync();
             }
-            catch (Exception ex)            {
+            catch (Exception ex)            
+            {
                 
                 throw new ApplicationException("Erro ao obter endereços.", ex);
             }
@@ -33,6 +34,7 @@ namespace SGE.Infra.Data.Repositorios
             try
             {
                 var endereco = await _context.Enderecos.FindAsync(id);
+
                 if (endereco == null)
                 {
                     throw new KeyNotFoundException("Endereço não encontrado.");

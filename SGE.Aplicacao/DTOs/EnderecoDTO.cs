@@ -5,6 +5,8 @@ namespace SGE.Aplicacao.DTOs
 {
     public class EnderecoDTO
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "O CEP é obrigatório.")]
         [RegularExpression(@"^\d{5}-\d{3}$", ErrorMessage = "O CEP deve estar no formato 00000-000.")]
         public string Cep { get; private set; } = string.Empty;

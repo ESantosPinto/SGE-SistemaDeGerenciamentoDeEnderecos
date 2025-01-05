@@ -50,6 +50,7 @@ public class EnderecoService : IEnderecoService
         try
         {
             var enderecoEntity = await _enderecoRepositorio.GetEnderecoPorIdAsync(id);
+
             if (enderecoEntity == null)
             {
                 throw new KeyNotFoundException("Endereço não encontrado.");

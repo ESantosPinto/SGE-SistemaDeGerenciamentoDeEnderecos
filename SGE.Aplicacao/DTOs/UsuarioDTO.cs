@@ -4,6 +4,8 @@ namespace SGE.Aplicacao.DTOs
 {
     public class UsuarioDTO
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "O login do usuário é obrigatório.")]
         [StringLength(10, MinimumLength = 6, ErrorMessage = "O login do usuário deve ter entre 6 e 10 caracteres.")]
         public string UsuarioLogin { get; set; } = string.Empty;

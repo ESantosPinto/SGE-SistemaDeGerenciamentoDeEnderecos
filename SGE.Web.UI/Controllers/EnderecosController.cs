@@ -2,9 +2,7 @@
 using SGE.Aplicacao.DTOs;
 using SGE.Aplicacao.Interfaces;
 
-namespace SGE.Web.UI.Controllers;
-
-public class EnderecosController : ControllerBase
+public class EnderecosController : Controller
 {
     private readonly IEnderecoService _enderecoService;
 
@@ -14,20 +12,33 @@ public class EnderecosController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<EnderecoDTO>>> Index()
+    public async Task<IActionResult> Index()
     {
         try
         {
             var enderecos = await _enderecoService.GetEnderecos();
             if (enderecos == null || !enderecos.Any())
             {
-                return Ok(new { message = "Não há endereços disponíveis no momento." });
+                return View(new List<EnderecoDTO>()); 
             }
-            return Ok(enderecos);
+            return View(enderecos);
         }
         catch (Exception)
         {
             return StatusCode(500, "Ocorreu um erro ao processar sua solicitação.");
         }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Details(int id)
+    {
+        if (id <= 0) return BadRequest(new { message = "ID inválido." });
+
+        var endereco = await _enderecoService.GetPorId(id);
+        if (endereco == null)
+        {
+            return NotFound(new { message = "Endereço não encontrado." });
+        }
+        return View(endereco); 
     }
 }

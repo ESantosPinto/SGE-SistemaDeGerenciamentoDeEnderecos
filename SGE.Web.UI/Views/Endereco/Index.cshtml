@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Catalogo.Domain.Entities.Endereco>
+﻿@model IEnumerable<SGE.Aplicacao.DTOs.EnderecoDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -33,9 +33,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Numero)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -63,9 +61,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Numero)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Nome)
-            </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
