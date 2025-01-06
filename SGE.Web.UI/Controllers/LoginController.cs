@@ -54,5 +54,12 @@ namespace SGE.Web.UI.Controllers
                 return View("Index");
             }
         }
+        [HttpPost]
+        public IActionResult Logout()
+        { // Lógica para logout (encerrar sessão, etc.)
+            return RedirectToAction("Index", "Login");
+
+        }
     }
+
 }

@@ -70,13 +70,13 @@ public class EnderecosController : Controller
         {
             return View(endereco);
         }
-           
+
         var usuarioLogin = endereco.UsuarioLogin;
         try
         {
             await _enderecoService.AdicionarEnderecoAsync(endereco);
-            UsuarioDTO usuarioDTO =await _usuarioService.BuscarUsuarioAsync(endereco.UsuarioLogin);
-            return RedirectToAction("Index", "Enderecos",usuarioDTO);
+            UsuarioDTO usuarioDTO = await _usuarioService.BuscarUsuarioAsync(endereco.UsuarioLogin);
+            return RedirectToAction("Index", "Enderecos", usuarioDTO);
         }
         catch (Exception ex)
         {
@@ -233,6 +233,5 @@ public class EnderecosController : Controller
         }
     }
 
-
-
+   
 }
