@@ -21,8 +21,7 @@ namespace SGE.Web.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar(UsuarioDTO usuario)
         {
-            if (ModelState.IsValid)
-            {
+            if(string.IsNullOrEmpty(usuario.UsuarioLogin)) {
                 var usuarioValid = await _usuarioService.BuscarUsuarioAsync(usuario.UsuarioLogin);
 
                 if (string.IsNullOrEmpty(usuarioValid.UsuarioLogin))
@@ -43,8 +42,9 @@ namespace SGE.Web.UI.Controllers
                 }
 
                 ModelState.AddModelError(string.Empty, "Erro ao cadastrar usuário.");
-            }
 
+            }
+            ModelState.AddModelError(string.Empty, "Erro ao cadastrar usuário verificar se os dados foram preenchidos corretamente.");
             return RedirectToAction("Index","Login");
         }
     }

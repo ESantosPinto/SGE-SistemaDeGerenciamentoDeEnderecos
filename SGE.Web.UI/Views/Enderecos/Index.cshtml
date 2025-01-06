@@ -90,7 +90,7 @@
         @* Verificando se o login do usuário está presente antes de renderizar o botão *@
         @if (!string.IsNullOrEmpty(usuarioLogin.UsuarioLogin))
         {
-            <a href="@Url.Action("ExportarCSV", "Enderecos", new { usuarioLogin = usuarioLogin })" class="btn btn-success">
+            <a href="@Url.Action("ExportarCSV", "Enderecos", new { usuarioLogin = usuarioLogin.UsuarioLogin })" class="btn btn-success">
                 Exportar CSV
             </a>
         }

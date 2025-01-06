@@ -22,13 +22,18 @@ namespace SGE.Infra.Data.Repositorios
         {
             try
             {
-                return await _context.Enderecos.Where(x => x.Id == usuarioId).ToListAsync();
+                // Verifica se a relação correta está sendo usada (UsuarioId em vez de Id)
+                var enderecos = await _context.Enderecos
+                    .Where(x => x.UsuarioId == usuarioId) // Corrige a relação
+                    .ToListAsync();
+
+                return enderecos;
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Erro ao obter endereços.", ex);
+                // Fornece uma mensagem clara sobre onde ocorreu o erro
+                throw new ApplicationException($"Erro ao obter endereços para o usuário com ID {usuarioId}.", ex);
             }
-
         }
 
         public async Task<Endereco> BuscarEnderecoPorIdAsync(int id)

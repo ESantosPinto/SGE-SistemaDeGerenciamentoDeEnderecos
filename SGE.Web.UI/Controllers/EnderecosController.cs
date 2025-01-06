@@ -76,7 +76,7 @@ public class EnderecosController : Controller
         {
             await _enderecoService.AdicionarEnderecoAsync(endereco);
             UsuarioDTO usuarioDTO =await _usuarioService.BuscarUsuarioAsync(endereco.UsuarioLogin);
-            return View(Index(usuarioDTO));
+            return RedirectToAction("Index", "Enderecos",usuarioDTO);
         }
         catch (Exception ex)
         {
@@ -162,20 +162,23 @@ public class EnderecosController : Controller
 
         try
         {
-            var endereco = await _enderecoService.BuscarEnderecoPorCep(cep);
-            if (endereco == null)
+            var dadosViaCep = await _enderecoService.BuscarEnderecoPorCep(cep);
+            if (dadosViaCep == null)
             {
                 return NotFound(new { message = "Endereço não encontrado." });
             }
-
-            return Json(new
+            EnderecoDTO endereco = new EnderecoDTO()
             {
-                logradouro = endereco.Logradouro,
-                complemento = endereco.Complemento,
-                bairro = endereco.Bairro,
-                cidade = endereco.Cidade,
-                uf = endereco.Uf
-            });
+                Cep = dadosViaCep.cep,
+                Logradouro = dadosViaCep.logradouro,
+                Complemento = string.Empty,
+                Bairro = dadosViaCep.bairro,
+                Cidade = dadosViaCep.localidade,
+                Uf = dadosViaCep.uf,
+                Numero = string.Empty,
+            };
+
+            return Json(endereco);
         }
         catch (Exception ex)
         {

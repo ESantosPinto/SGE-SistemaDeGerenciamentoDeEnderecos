@@ -132,7 +132,7 @@ public class EnderecoService : IEnderecoService
         }
     }
 
-    public async Task<Endereco> BuscarEnderecoPorCep(string cep)
+    public async Task<DadosViaCep> BuscarEnderecoPorCep(string cep)
     {
         HttpClient _httpClient = new HttpClient();
 
@@ -152,7 +152,7 @@ public class EnderecoService : IEnderecoService
             }
 
             // Converte a resposta JSON para o objeto Endereco
-            var endereco = JsonConvert.DeserializeObject<Endereco>(response);
+            var endereco = JsonConvert.DeserializeObject<DadosViaCep>(response);
 
             return endereco;
         }
