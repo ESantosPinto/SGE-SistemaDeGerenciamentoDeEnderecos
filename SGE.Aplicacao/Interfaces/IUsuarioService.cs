@@ -6,7 +6,7 @@ namespace SGE.Aplicacao.Interfaces
     {
         Task<UsuarioDTO> BuscarUsuarioAsync(string usuarioLogin);
         Task AdicionarEnderecoAsync(string login, EnderecoDTO endereco);
-        Task<UsuarioDTO> CriarUsuarioAsync(UsuarioDTO usuarioDTO);
+        Task<UsuarioDTO> CriarUsuarioAsync(UsuarioDTO usuarioDTO); 
 
     }
 }

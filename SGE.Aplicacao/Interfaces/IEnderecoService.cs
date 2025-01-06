@@ -5,7 +5,7 @@ namespace SGE.Aplicacao.Interfaces;
 
 public interface IEnderecoService
 {
-    Task<IEnumerable<EnderecoDTO>> BuscaaEnderecoAsync();
+    Task<IEnumerable<EnderecoDTO>> BuscarEnderecosPorUsuarioAsync(string login);
     Task<EnderecoDTO> BuscarEnderecoPorIdAsync(int id);
     Task<EnderecoDTO> AdicionarEnderecoAsync(EnderecoDTO enderecoDTO);
     Task AtualizaEnderecoAsync(EnderecoDTO enderecoDTO);

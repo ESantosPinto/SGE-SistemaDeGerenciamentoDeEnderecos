@@ -14,8 +14,6 @@ namespace SGE.Infra.Data.Repositorios
             _context = context;
         }
 
-
-
         public async Task<Usuario> AtualizarUsuarioAsync(Usuario usuario)
         {
             try
@@ -44,7 +42,8 @@ namespace SGE.Infra.Data.Repositorios
                 if (string.IsNullOrWhiteSpace(usuarioLogin))
                     throw new ArgumentException("O login do usuário não pode ser nulo ou vazio.", nameof(usuarioLogin));
 
-                return await _context.Usuarios.FirstOrDefaultAsync(u => u.UsuarioLogin == usuarioLogin);
+               var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.UsuarioLogin == usuarioLogin);
+                return usuario == null ? new Usuario() : usuario; 
             }
             catch (Exception ex)
             {

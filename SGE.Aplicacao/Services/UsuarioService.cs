@@ -14,8 +14,15 @@ namespace SGE.Aplicacao.Services
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IEnderecoRepositorio _enderecoRepositorio;
         private readonly IMapper _mapper;
 
+        public UsuarioService(IEnderecoRepositorio enderecoRepositorio, IUsuarioRepositorio usuarioRepositorio, IMapper mapper)
+        {
+            _enderecoRepositorio = enderecoRepositorio;
+            _usuarioRepositorio = usuarioRepositorio;
+            _mapper = mapper;
+        }
         public async Task AdicionarEnderecoAsync(string login,EnderecoDTO endereco)
         {
             try
@@ -35,10 +42,11 @@ namespace SGE.Aplicacao.Services
                 throw new Exception(ex.Message);
             }
            
-        }
+        }       
 
         public async Task<UsuarioDTO> BuscarUsuarioAsync(string usuarioLogin)
         {
+
             var usuarioEntity = await _usuarioRepositorio.BuscarUsuarioPorLoginAsync(usuarioLogin);
             return _mapper.Map<UsuarioDTO>(usuarioEntity);
         }
@@ -48,7 +56,7 @@ namespace SGE.Aplicacao.Services
             try
             {
                 var usuario = await _usuarioRepositorio.BuscarUsuarioPorLoginAsync(usuarioDTO.UsuarioLogin);
-                if (usuario != null)
+                if (!string.IsNullOrEmpty(usuario.UsuarioLogin))
                 {
                     throw new Exception("Usuario já cadastrado");
                 }

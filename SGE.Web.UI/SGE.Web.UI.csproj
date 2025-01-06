@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\CadastroUsuario\**" />
+    <Content Remove="Views\CadastroUsuario\**" />
+    <EmbeddedResource Remove="Views\CadastroUsuario\**" />
+    <None Remove="Views\CadastroUsuario\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SGE.Infra.IoC\SGE.Infra.IoC.csproj" />
   </ItemGroup>
 

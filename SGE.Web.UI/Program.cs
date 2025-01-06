@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using SGE.Infra.IoC.Ioc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-pattern: "{controller=Enderecos}/{action=Index}");
+    name: "default",  pattern: "{controller=Login}/{action=Index}");
 //pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

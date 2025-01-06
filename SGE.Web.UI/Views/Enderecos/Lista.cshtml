@@ -39,11 +39,11 @@
 
             <!-- Botão de Cadastro de Novo Endereço -->
             <div class="d-flex justify-content-end">
-                <a href="@Url.Action("Create", "Endereco")" class="btn btn-success">Cadastrar Novo Endereço</a>
+                <a href="@Url.Action("Create", "Enderecos")" class="btn btn-success">Cadastrar Novo Endereço</a>
             </div>
 
 
-              <!-- Tabela de Endereços Cadastrados -->
+            <!-- Tabela de Endereços Cadastrados -->
             <div class="table-container">
                 <table class="table table-striped">
                     <thead>
@@ -54,7 +54,7 @@
                             <th scope="col">Bairro</th>
                             <th scope="col">Cidade</th>
                             <th scope="col">Uf</th>
-                            <th scope="col">Número</th>    
+                            <th scope="col">Número</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -68,7 +68,7 @@
                                 <td>@endereco.Bairro</td>
                                 <td>@endereco.Cidade</td>
                                 <td>@endereco.Uf</td>
-                                <td>@endereco.Numero</td>                             
+                                <td>@endereco.Numero</td>
                                 <td>
                                     <!-- Botões de Ação -->
                                     <a href="@Url.Action("Editar", "Enderecos", new { id = endereco.Id })" class="btn btn-warning btn-sm">Editar</a>

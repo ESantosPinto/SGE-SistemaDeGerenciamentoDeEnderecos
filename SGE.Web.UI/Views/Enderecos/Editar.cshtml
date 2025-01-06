@@ -1,29 +1,33 @@
 ﻿@model SGE.Aplicacao.DTOs.EnderecoDTO
 
-<h2>Detalhes do Endereço</h2>
+@{
+    ViewData["Title"] = "Editar Endereço";
+}
 
-<div>
-    <strong>Cep:</strong> @Model.Cep
-</div>
-<div>
-    <strong>Complemento:</strong> @Model.Complemento
-</div>
-<div>
-    <strong>Rua:</strong> @Model.Logradouro
-</div>
-<div>
-    <strong>Bairro:</strong> @Model.Bairro
-</div>
-<div>
-    <strong>Cidade:</strong> @Model.Cidade
-</div>
-<div>
-    <strong>Estado:</strong> @Model.Uf
-</div>
-<div>
-    <strong>Numero:</strong> @Model.Numero
-</div>
+<h2>@ViewData["Title"]</h2>
 
-<div>
-    <a href="@Url.Action("Index", "Enderecos")">Voltar à lista de endereços</a>
-</div>
+<form method="post">
+    <div class="form-group">
+        <label for="Logradouro">Logradouro</label>
+        <input type="text" class="form-control" id="Logradouro" name="Logradouro" value="@Model.Logradouro" required />
+    </div>
+    <div class="form-group">
+        <label for="Bairro">Bairro</label>
+        <input type="text" class="form-control" id="Bairro" name="Bairro" value="@Model.Bairro" required />
+    </div>
+    <div class="form-group">
+        <label for="Cidade">Cidade</label>
+        <input type="text" class="form-control" id="Cidade" name="Cidade" value="@Model.Cidade" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+
+
+
+
+
+
+
+
+

@@ -9,28 +9,38 @@ namespace SGE.Aplicacao.Services;
 public class EnderecoService : IEnderecoService
 {
     private readonly IEnderecoRepositorio _enderecoRepositorio;
-    private readonly IMapper _mapper;  
+    private readonly IUsuarioRepositorio _usuarioRepositorio;
+    private readonly IMapper _mapper;
 
-    public EnderecoService(IEnderecoRepositorio enderecoRepositorio, IMapper mapper)
+    public EnderecoService(IEnderecoRepositorio enderecoRepositorio, IUsuarioRepositorio usuarioRepositorio, IMapper mapper)
     {
         _enderecoRepositorio = enderecoRepositorio;
-        _mapper = mapper;       
+        _usuarioRepositorio = usuarioRepositorio;
+        _mapper = mapper;
     }
 
-
-    public async Task<IEnumerable<EnderecoDTO>> BuscaaEnderecoAsync()
+    public async Task<IEnumerable<EnderecoDTO>> BuscarEnderecosPorUsuarioAsync(string login)
     {
         try
         {
-            var enderecoEntities = await _enderecoRepositorio.BuscarEnderecosAsync();
-            var enderecosDTO = _mapper.Map<IEnumerable<EnderecoDTO>>(enderecoEntities);
-
-            if (enderecosDTO == null)
+            var usuario = await _usuarioRepositorio.BuscarUsuarioPorLoginAsync(login);
+            if (usuario != null)
             {
-                throw new ApplicationException("Erro ao mapear os endereços.");
-            }
+                var enderecoEntities = await _enderecoRepositorio.BuscarEnderecosPorIdUsuarioAsync(usuario.Id);
 
-            return enderecosDTO;
+                var enderecosDTO = _mapper.Map<IEnumerable<EnderecoDTO>>(enderecoEntities);
+                if (enderecosDTO == null)
+                {
+                    throw new ApplicationException("Erro ao mapear os endereços.");
+                }
+
+                return enderecosDTO;
+            }
+            else
+            {
+
+                throw new Exception("Não encontrado informações do usuario");
+            }
         }
         catch (HttpRequestException)
         {
@@ -68,7 +78,7 @@ public class EnderecoService : IEnderecoService
 
         try
         {
-           var enderecoResultado = await _enderecoRepositorio.AdicionarEnderecoAsync(_mapper.Map<Endereco>(enderecoDTO));
+            var enderecoResultado = await _enderecoRepositorio.AdicionarEnderecoAsync(_mapper.Map<Endereco>(enderecoDTO));
             return _mapper.Map<EnderecoDTO>(enderecoResultado);
         }
         catch (Exception ex)
