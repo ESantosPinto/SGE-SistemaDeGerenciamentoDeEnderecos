@@ -15,6 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Web.UI", "SGE.Web.UI\SG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.BuscarEnderecoAPI", "SGE.BuscarEnderecoAPI\SGE.BuscarEnderecoAPI.csproj", "{596F0C5A-2C02-41E7-B23D-2D2A34B32182}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptsBancoDeDados", "ScriptsBancoDeDados", "{493EF04B-27D7-484F-96F5-314F0CD9355B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\SistemaGerenciamentoEnderecos\TabelaDeEnderecos.sql = ..\..\SistemaGerenciamentoEnderecos\TabelaDeEnderecos.sql
+		..\..\SistemaGerenciamentoEnderecos\TabelaDeUsuarios.sql = ..\..\SistemaGerenciamentoEnderecos\TabelaDeUsuarios.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
