@@ -1,39 +1,58 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
-using Newtonsoft.Json;
 using SGE.Aplicacao.DTOs;
 using SGE.Aplicacao.Interfaces;
-using SGE.Dominio.Entidades;
 
 namespace SGE.Web.UI.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly IUsuarioService _usuarioService;      
+        private readonly IUsuarioService _usuarioService;
 
         public LoginController(IUsuarioService usuarioService)
         {
-            _usuarioService = usuarioService;            
+            _usuarioService = usuarioService;
         }
 
+        // GET: /Login/
         public IActionResult Index()
         {
             return View();
         }
 
+        // POST: /Login/Login
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(string usuarioLogin, string senha)
         {
-            
-            var usuario = await _usuarioService.BuscarUsuarioAsync(usuarioLogin);            
-            if (usuario != null)
+            if (string.IsNullOrWhiteSpace(usuarioLogin) || string.IsNullOrWhiteSpace(senha))
             {
-                return RedirectToAction("Lista", "Enderecos",new UsuarioDTO {UsuarioLogin = usuarioLogin, Senha = "", Id = 0 });
+                ModelState.AddModelError(string.Empty, "Login e senha são obrigatórios.");
+                return View("Index");
             }
 
-            ModelState.AddModelError(string.Empty, "Login ou senha inválidos.");
-            return View("Index");
-        }
+            try
+            {
+                var usuario = await _usuarioService.BuscarUsuarioAsync(usuarioLogin);
 
+                if (usuario != null && usuario.Senha == senha) // Verifique se a senha confere
+                {
+                    // Redireciona para a página de endereços passando o usuário como parâmetro
+                    var usuarioDTO = new UsuarioDTO
+                    {
+                        UsuarioLogin = usuarioLogin,
+                        Id = usuario.Id
+                    };
+                    return RedirectToAction("Index", "Enderecos", usuarioDTO);
+                }
+
+                ModelState.AddModelError(string.Empty, "Login ou senha inválidos.");
+                return View("Index");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Erro ao processar o login: {ex.Message}");
+                return View("Index");
+            }
+        }
     }
 }

@@ -2,6 +2,11 @@
     ViewData["Title"] = "Endereços";
 }
 
+@* Obtendo o login do usuário da ViewData *@
+@{
+    var usuarioLogin = ViewData["Usuario"] as SGE.Aplicacao.DTOs.UsuarioDTO; // Garantir que o valor não seja nulo
+}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,11 +44,10 @@
 
             <!-- Botão de Cadastro de Novo Endereço -->
             <div class="d-flex justify-content-end">
-                <a href="@Url.Action("Create", "Endereco")" class="btn btn-success">Cadastrar Novo Endereço</a>
+                <a href="@Url.Action("Create", "Enderecos", usuarioLogin)" class="btn btn-success">Cadastrar Novo Endereço</a>
             </div>
 
-
-              <!-- Tabela de Endereços Cadastrados -->
+            <!-- Tabela de Endereços Cadastrados -->
             <div class="table-container">
                 <table class="table table-striped">
                     <thead>
@@ -54,7 +58,7 @@
                             <th scope="col">Bairro</th>
                             <th scope="col">Cidade</th>
                             <th scope="col">Uf</th>
-                            <th scope="col">Número</th>    
+                            <th scope="col">Número</th>
                             <th scope="col">Ações</th>
                         </tr>
                     </thead>
@@ -68,7 +72,7 @@
                                 <td>@endereco.Bairro</td>
                                 <td>@endereco.Cidade</td>
                                 <td>@endereco.Uf</td>
-                                <td>@endereco.Numero</td>                             
+                                <td>@endereco.Numero</td>
                                 <td>
                                     <!-- Botões de Ação -->
                                     <a href="@Url.Action("Editar", "Enderecos", new { id = endereco.Id })" class="btn btn-warning btn-sm">Editar</a>
@@ -80,6 +84,20 @@
                 </table>
             </div>
         </div>
+
+     
+
+        @* Verificando se o login do usuário está presente antes de renderizar o botão *@
+        @if (!string.IsNullOrEmpty(usuarioLogin.UsuarioLogin))
+        {
+            <a href="@Url.Action("ExportarCSV", "Enderecos", new { usuarioLogin = usuarioLogin })" class="btn btn-success">
+                Exportar CSV
+            </a>
+        }
+        else
+        {
+            <p class="text-danger">O login do usuário não foi encontrado.</p>
+        }
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

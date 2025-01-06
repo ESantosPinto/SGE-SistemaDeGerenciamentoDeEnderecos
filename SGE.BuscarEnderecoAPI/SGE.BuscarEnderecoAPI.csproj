@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SGE.Dominio\SGE.Dominio.csproj" />
+    <Folder Include="EnderecoAPI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SGE.Aplicacao\SGE.Aplicacao.csproj" />
   </ItemGroup>
 
 </Project>

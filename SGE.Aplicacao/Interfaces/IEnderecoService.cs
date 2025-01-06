@@ -10,4 +10,5 @@ public interface IEnderecoService
     Task<EnderecoDTO> AdicionarEnderecoAsync(EnderecoDTO enderecoDTO);
     Task AtualizaEnderecoAsync(EnderecoDTO enderecoDTO);
     Task RemoveEnderecoAsync(int id);
+    Task<Endereco> BuscarEnderecoPorCep(string cep);
 }

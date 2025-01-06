@@ -33,7 +33,7 @@ namespace SGE.Aplicacao.DTOs
         [Required(ErrorMessage = "O número é obrigatório.")]
         [StringLength(10, ErrorMessage = "O número deve ter no máximo 10 caracteres.")]
         public string Numero { get; set; } = string.Empty;
-
+        public string UsuarioLogin{ get; set; }
         public int UsuarioId { get; set; }
     }
 }

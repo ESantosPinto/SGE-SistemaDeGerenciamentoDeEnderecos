@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.Dominio", "SGE.Dominio\SGE.Dominio.csproj", "{46811A58-024D-4E9F-99A7-111BE1AC3C35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Dominio", "SGE.Dominio\SGE.Dominio.csproj", "{46811A58-024D-4E9F-99A7-111BE1AC3C35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.Aplicacao", "SGE.Aplicacao\SGE.Aplicacao.csproj", "{1B23B3B3-4666-4961-978E-F51B1D998B15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Aplicacao", "SGE.Aplicacao\SGE.Aplicacao.csproj", "{1B23B3B3-4666-4961-978E-F51B1D998B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.Infra.Data", "SGE.Infra.Data\SGE.Infra.Data.csproj", "{5F611B90-698E-4FA1-9F5B-4D95432470D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Infra.Data", "SGE.Infra.Data\SGE.Infra.Data.csproj", "{5F611B90-698E-4FA1-9F5B-4D95432470D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.Infra.IoC", "SGE.Infra.IoC\SGE.Infra.IoC.csproj", "{4497EFCF-0319-409D-9AFC-E591E2260F8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Infra.IoC", "SGE.Infra.IoC\SGE.Infra.IoC.csproj", "{4497EFCF-0319-409D-9AFC-E591E2260F8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.Web.UI", "SGE.Web.UI\SGE.Web.UI.csproj", "{9DB39E57-7E64-4F12-88EC-3A1B866EE9D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGE.Web.UI", "SGE.Web.UI\SGE.Web.UI.csproj", "{9DB39E57-7E64-4F12-88EC-3A1B866EE9D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGE.BuscarEnderecoAPI", "SGE.BuscarEnderecoAPI\SGE.BuscarEnderecoAPI.csproj", "{596F0C5A-2C02-41E7-B23D-2D2A34B32182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9DB39E57-7E64-4F12-88EC-3A1B866EE9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB39E57-7E64-4F12-88EC-3A1B866EE9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB39E57-7E64-4F12-88EC-3A1B866EE9D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{596F0C5A-2C02-41E7-B23D-2D2A34B32182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{596F0C5A-2C02-41E7-B23D-2D2A34B32182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{596F0C5A-2C02-41E7-B23D-2D2A34B32182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{596F0C5A-2C02-41E7-B23D-2D2A34B32182}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

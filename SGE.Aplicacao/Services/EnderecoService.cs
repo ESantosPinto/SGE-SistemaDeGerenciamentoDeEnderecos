@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using SGE.Aplicacao.DTOs;
 using SGE.Aplicacao.Interfaces;
 using SGE.Dominio.Entidades;
@@ -72,13 +73,21 @@ public class EnderecoService : IEnderecoService
         }
     }
 
-    public async Task<EnderecoDTO> AdicionarEnderecoAsync(EnderecoDTO enderecoDTO)
+    public async Task<EnderecoDTO> AdicionarEnderecoAsync(EnderecoDTO endereco)
     {
-        if (enderecoDTO == null) throw new ArgumentNullException(nameof(enderecoDTO));
-
+       
         try
         {
-            var enderecoResultado = await _enderecoRepositorio.AdicionarEnderecoAsync(_mapper.Map<Endereco>(enderecoDTO));
+            var usuario = await _usuarioRepositorio.BuscarUsuarioPorLoginAsync(endereco.UsuarioLogin);
+
+            if (endereco== null || endereco.UsuarioLogin == null)
+            {
+                throw new ArgumentNullException(nameof(endereco));
+            }
+
+            endereco.UsuarioId = usuario.Id;
+
+            var enderecoResultado = await _enderecoRepositorio.AdicionarEnderecoAsync(_mapper.Map<Endereco>(endereco));
             return _mapper.Map<EnderecoDTO>(enderecoResultado);
         }
         catch (Exception ex)
@@ -120,6 +129,37 @@ public class EnderecoService : IEnderecoService
         catch (Exception ex)
         {
             throw new ApplicationException("Erro ao remover o endereço.", ex);
+        }
+    }
+
+    public async Task<Endereco> BuscarEnderecoPorCep(string cep)
+    {
+        HttpClient _httpClient = new HttpClient();
+
+        try
+        {
+            // Monta a URL da API ViaCEP com o CEP fornecido
+            var url = $"https://viacep.com.br/ws/{cep}/json/";
+
+            // Faz a requisição HTTP para a API
+            var response = await _httpClient.GetStringAsync(url);
+
+            // Verifica se a resposta não é erro ou JSON vazio
+            if (response.Contains("erro"))
+            {
+                Console.WriteLine("CEP não encontrado ou inválido.");
+                return null;
+            }
+
+            // Converte a resposta JSON para o objeto Endereco
+            var endereco = JsonConvert.DeserializeObject<Endereco>(response);
+
+            return endereco;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao acessar a API: {ex.Message}");
+            return null;
         }
     }
 }
